@@ -4,11 +4,11 @@ using System.Collections;
 public class Bibbit_Behaviour : MonoBehaviour {
 
     VRTK_InteractableObject m_InterObj;
-    ParticleSystem m_Bibbits;
+    //ParticleSystem m_Bibbits;
     GameObject m_GrabbingObject;
-    bool m_IsParticleAwake = false;
+    //bool m_IsParticleAwake = false;
+    bool m_IsRumbleDead = true;
 
-	// Use this for initialization
 	void Start ()
     {
         m_InterObj = gameObject.GetComponent<VRTK_InteractableObject>();
@@ -16,43 +16,43 @@ public class Bibbit_Behaviour : MonoBehaviour {
         {
             Debug.Log("Script Located");
         }
-
+        /*
         m_Bibbits = gameObject.transform.GetComponentInChildren<ParticleSystem>();
         if (m_Bibbits != null)
         {
             Debug.Log("Bibbits Located");
             m_Bibbits.Stop();
         }
+        */
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
     {
         if (m_InterObj.IsGrabbed() == true)
         {
-            if (m_IsParticleAwake != true)
+            if (m_GrabbingObject == null)
             {
-                m_Bibbits.Play();
-                m_IsParticleAwake = true;
-                Debug.Log("Bibbit particle created");
                 m_GrabbingObject = m_InterObj.GetGrabbingObject();
-                if (m_GrabbingObject != null)
-                {
-                    Debug.Log("Grabbed Controller Located");
-                }
+                m_IsRumbleDead = false;
+                Debug.Log("Grabbed Controller Located");
             }
 
-            else
+            if (m_IsRumbleDead != true)
             {
-                m_GrabbingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(10, 200);
+                m_GrabbingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(50, 200);
+                m_IsRumbleDead = true;
             }
+
         }
 
         else
         {
+            m_IsRumbleDead = false;
+            /*
             m_Bibbits.Stop();
             m_IsParticleAwake = false;
             m_GrabbingObject = null;
+            */
         }
 	}
 }
