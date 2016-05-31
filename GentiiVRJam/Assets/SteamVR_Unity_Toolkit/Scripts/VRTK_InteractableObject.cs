@@ -72,6 +72,7 @@ public class VRTK_InteractableObject : MonoBehaviour
     protected GameObject grabbingObject = null;
 
     private bool isTouched = false;
+    private GameObject touchingObject = null;
     private bool isUsing = false;
     private int usingState = 0;
     private Color[] originalObjectColours = null;
@@ -142,16 +143,23 @@ public class VRTK_InteractableObject : MonoBehaviour
         return grabbingObject;
     }
 
-    public virtual void StartTouching(GameObject touchingObject)
+    public virtual void StartTouching(GameObject _touchingObject)
     {
         OnInteractableObjectTouched(SetInteractableObjectEvent(touchingObject));
         isTouched = true;
+        touchingObject = _touchingObject;
     }
 
     public virtual void StopTouching(GameObject previousTouchingObject)
     {
         OnInteractableObjectUntouched(SetInteractableObjectEvent(previousTouchingObject));
         isTouched = false;
+        touchingObject = null;
+    }
+
+    public GameObject GetTouchingObject()
+    {
+        return touchingObject;
     }
 
     public virtual void Grabbed(GameObject currentGrabbingObject)
