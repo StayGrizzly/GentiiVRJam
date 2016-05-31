@@ -6,6 +6,7 @@ public class Bibbit_Behaviour : MonoBehaviour {
     VRTK_InteractableObject m_InterObj;
     GameObject m_GrabbingObject;
     bool m_IsRumbleDead = true;
+    bool m_IsNewAudioRunning = true;
 
     AudioSource m_AudioSource;
     public AudioClip m_IdleAudio;
@@ -19,11 +20,11 @@ public class Bibbit_Behaviour : MonoBehaviour {
             Debug.Log("Script Located");
         }
 
-        m_AudioSource = gameObject.GetComponent<AudioSource>();
+        m_AudioSource = gameObject.AddComponent<AudioSource>();
         if (m_InterObj != null)
         {
             Debug.Log("Audio Source Located");
-            m_AudioSource.clip = m_IdleAudio;
+            SetNewAudio(m_IdleAudio, 1f, true);
         }
     }
 
@@ -35,9 +36,15 @@ public class Bibbit_Behaviour : MonoBehaviour {
             {
                 m_GrabbingObject = m_InterObj.GetGrabbingObject();
                 m_IsRumbleDead = false;
-                m_AudioSource.clip = m_GrabbedAudio;
+                m_IsNewAudioRunning = false;
                 Debug.Log("Grabbed Controller Located");
             }
+
+            if (m_IsNewAudioRunning != true)
+            {
+                SetNewAudio(m_GrabbedAudio, 1f, true);
+                m_IsNewAudioRunning = true;
+            } 
 
             if (m_IsRumbleDead != true)
             {
@@ -50,7 +57,17 @@ public class Bibbit_Behaviour : MonoBehaviour {
         else
         {
             m_IsRumbleDead = false;
-            m_AudioSource.clip = m_IdleAudio;
+            m_IsNewAudioRunning = false;
+            SetNewAudio(m_IdleAudio, 1f, true);
         }
 	}
+
+    private void SetNewAudio(AudioClip _newAudioClip, float _newVolume, bool _isLooping)
+    {
+        m_AudioSource.Stop();
+        m_AudioSource.clip = _newAudioClip;
+        //m_AudioSource.volume = _newVolume;
+        //m_AudioSource.loop = _isLooping;
+        m_AudioSource.Play();
+    }
 }

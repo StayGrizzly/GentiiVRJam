@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: c174419bd3fdfa2498e43cc001e51cfd
-timeCreated: 1464727051
+guid: c0898732486e9cc40a0de7b7a4c3ba69
+timeCreated: 1464731525
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: eyeball_half
-    100002: //RootNode
-    400000: eyeball_half
-    400002: //RootNode
-    2300000: eyeball_half
-    3300000: eyeball_half
-    4300000: eyeball_half
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: prop_vent1
   materials:
     importMaterials: 1
     materialName: 0
