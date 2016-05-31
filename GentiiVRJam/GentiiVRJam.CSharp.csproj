@@ -102,6 +102,8 @@
     <Compile Include="Assets\Examples\Scripts\VRTK_ControllerInteract_ListenerExample.cs" />
     <Compile Include="Assets\Examples\Scripts\VRTK_ControllerPointerEvents_ListenerExample.cs" />
     <Compile Include="Assets\Examples\Scripts\Whirlygig.cs" />
+    <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\SecretHoleBehaviour.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
