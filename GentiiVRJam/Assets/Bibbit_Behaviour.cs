@@ -4,10 +4,12 @@ using System.Collections;
 public class Bibbit_Behaviour : MonoBehaviour {
 
     VRTK_InteractableObject m_InterObj;
-    //ParticleSystem m_Bibbits;
     GameObject m_GrabbingObject;
-    //bool m_IsParticleAwake = false;
     bool m_IsRumbleDead = true;
+
+    AudioSource m_AudioSource;
+    public AudioClip m_IdleAudio;
+    public AudioClip m_GrabbedAudio;
 
 	void Start ()
     {
@@ -16,15 +18,14 @@ public class Bibbit_Behaviour : MonoBehaviour {
         {
             Debug.Log("Script Located");
         }
-        /*
-        m_Bibbits = gameObject.transform.GetComponentInChildren<ParticleSystem>();
-        if (m_Bibbits != null)
+
+        m_AudioSource = gameObject.GetComponent<AudioSource>();
+        if (m_InterObj != null)
         {
-            Debug.Log("Bibbits Located");
-            m_Bibbits.Stop();
+            Debug.Log("Audio Source Located");
+            m_AudioSource.clip = m_IdleAudio;
         }
-        */
-	}
+    }
 
 	void Update ()
     {
@@ -34,6 +35,7 @@ public class Bibbit_Behaviour : MonoBehaviour {
             {
                 m_GrabbingObject = m_InterObj.GetGrabbingObject();
                 m_IsRumbleDead = false;
+                m_AudioSource.clip = m_GrabbedAudio;
                 Debug.Log("Grabbed Controller Located");
             }
 
@@ -48,11 +50,7 @@ public class Bibbit_Behaviour : MonoBehaviour {
         else
         {
             m_IsRumbleDead = false;
-            /*
-            m_Bibbits.Stop();
-            m_IsParticleAwake = false;
-            m_GrabbingObject = null;
-            */
+            m_AudioSource.clip = m_IdleAudio;
         }
 	}
 }
