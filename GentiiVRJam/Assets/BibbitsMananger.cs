@@ -7,7 +7,9 @@ public class BibbitsMananger : MonoBehaviour {
     public GameObject[] m_BibbitHoles;
     public GameObject[] m_BibbitPrefabs;
 
-    int BibbitHole;
+    private GameObject m_CurrentBibbit = null;
+
+
     int BibbitType;
 
     bool isBibbitPlaced;
@@ -15,26 +17,39 @@ public class BibbitsMananger : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        PlaceNewBibbit();
+        PlaceNewBibbit(Random.Range(0, m_BibbitPrefabs.Length));
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        // test = Random.Range(0, m_BibbitPrefabs.Length);
-        // Debug.Log(test);
+        if (isBibbitPlaced == false)
+        {
+            PlaceNewBibbit(Random.Range(0, m_BibbitPrefabs.Length));
+        }
 
-
-        // Place Bibbit (only if it's not there)
+        CheckHiddenBibbit();
         // Check if bibbit is still there
         // if bibbit is gone then confirm buffer
 
 
 	}
 
-    private void PlaceNewBibbit()
+    private void PlaceNewBibbit(int _bibbittype)
     {
+        Debug.Log("New Bibbit Placed");
+        int CurrentHole = Random.Range(0, m_BibbitHoles.Length);
+        m_CurrentBibbit = (GameObject)Instantiate(m_BibbitPrefabs[_bibbittype], m_BibbitHoles[CurrentHole].transform.position, Quaternion.identity);
+        m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().FreezeBibbit();
+        isBibbitPlaced = true;
+    }
 
+    private void CheckHiddenBibbit()
+    {
+        if (m_CurrentBibbit.GetComponent<VRTK_InteractableObject>().IsGrabbed())
+        {
+            isBibbitPlaced = false;
+        } 
     }
 
 
