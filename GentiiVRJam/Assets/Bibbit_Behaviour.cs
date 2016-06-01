@@ -34,6 +34,7 @@ public class Bibbit_Behaviour : MonoBehaviour {
     {
         if (m_InterObj.IsGrabbed() == true)
         {
+            UnfreezeBibbit();
             Debug.Log("Object Grabbed!");
             if (m_GrabbingObject == null)
             {
@@ -76,5 +77,15 @@ public class Bibbit_Behaviour : MonoBehaviour {
         m_AudioSource.volume = _newVolume;
         m_AudioSource.loop = _isLooping;
         m_AudioSource.Play();
+    }
+
+    public void FreezeBibbit()
+    {
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    public void UnfreezeBibbit()
+    {
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 }
