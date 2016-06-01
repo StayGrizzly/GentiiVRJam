@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: d789d0e8e9ae990459ac0caa512ef210
-timeCreated: 1464731059
+guid: d0cdee86f21a92347a8c0119a32e3199
+timeCreated: 1464795562
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: prop_rubble3
-    4300002: prop_rubble5
-    4300004: prop_rubble8
+    100000: eyeball_half
+    100002: //RootNode
+    400000: eyeball_half
+    400002: //RootNode
+    2300000: eyeball_half
+    3300000: eyeball_half
+    4300000: eyeball_half
   materials:
     importMaterials: 1
     materialName: 0

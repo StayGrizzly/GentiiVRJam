@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d789d0e8e9ae990459ac0caa512ef210
-timeCreated: 1464731059
+guid: 23eab83a71e05b8428830a8d5af39744
+timeCreated: 1464796716
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,9 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: prop_rubble3
-    4300002: prop_rubble5
-    4300004: prop_rubble8
+    4300000: prop_vent9
+    4300002: prop_vent10
   materials:
     importMaterials: 1
     materialName: 0
