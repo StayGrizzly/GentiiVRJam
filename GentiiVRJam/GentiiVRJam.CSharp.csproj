@@ -72,6 +72,7 @@
     <Compile Include="Assets\Bibbit_Behaviour.cs" />
     <Compile Include="Assets\BibbitsMananger.cs" />
     <Compile Include="Assets\BillboardObject.cs" />
+    <Compile Include="Assets\CleanableRubble.cs" />
     <Compile Include="Assets\Examples\Scripts\Archery\Arrow.cs" />
     <Compile Include="Assets\Examples\Scripts\Archery\ArrowNotch.cs" />
     <Compile Include="Assets\Examples\Scripts\Archery\ArrowSpawner.cs" />

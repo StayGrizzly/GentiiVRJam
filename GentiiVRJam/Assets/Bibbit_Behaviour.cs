@@ -25,7 +25,7 @@ public class Bibbit_Behaviour : MonoBehaviour {
         if (m_InterObj != null)
         {
             Debug.Log("Audio Source Located");
-            SetNewAudio(m_IdleAudio, 1f, true);
+            SetNewAudio(m_IdleAudio, .5f, true);
             m_IsStillIdle = true;
         }
     }

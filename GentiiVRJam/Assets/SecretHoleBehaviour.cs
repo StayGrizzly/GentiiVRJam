@@ -6,6 +6,10 @@ public class SecretHoleBehaviour : MonoBehaviour {
     VRTK_InteractableObject m_InterObj;
     GameObject m_TouchingObject;
 
+    bool m_AwakeVibration = false;
+
+    public void SetAwakeVibration(bool _isvibrationawoken) { m_AwakeVibration = _isvibrationawoken; }
+
     // Use this for initialization
     void Start ()
     {
@@ -17,12 +21,17 @@ public class SecretHoleBehaviour : MonoBehaviour {
 
     }
 
+
+
     void Update()
     {
-        if (m_InterObj.IsTouched() == true)
+        if (m_AwakeVibration == true)
         {
-            m_TouchingObject = m_InterObj.GetTouchingObject();
-            m_TouchingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(10, 200);
+            if (m_InterObj.IsTouched() == true)
+            {
+                m_TouchingObject = m_InterObj.GetTouchingObject();
+                m_TouchingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(10, 200);
+            }
         }
     }
 }

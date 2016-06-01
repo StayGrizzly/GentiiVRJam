@@ -7,6 +7,7 @@ public class BibbitsMananger : MonoBehaviour {
     public GameObject[] m_BibbitHoles;
     public GameObject[] m_BibbitPrefabs;
 
+    int m_CurrentHole;
     private GameObject m_CurrentBibbit = null;
 
 
@@ -38,9 +39,10 @@ public class BibbitsMananger : MonoBehaviour {
     private void PlaceNewBibbit(int _bibbittype)
     {
         Debug.Log("New Bibbit Placed");
-        int CurrentHole = Random.Range(0, m_BibbitHoles.Length);
-        m_CurrentBibbit = (GameObject)Instantiate(m_BibbitPrefabs[_bibbittype], m_BibbitHoles[CurrentHole].transform.position, Quaternion.identity);
+        m_CurrentHole = Random.Range(0, m_BibbitHoles.Length);
+        m_CurrentBibbit = (GameObject)Instantiate(m_BibbitPrefabs[_bibbittype], m_BibbitHoles[m_CurrentHole].transform.FindChild("Bibbit Area").position, Quaternion.identity);
         m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().FreezeBibbit();
+        m_BibbitHoles[m_CurrentHole].GetComponentInChildren<SecretHoleBehaviour>().SetAwakeVibration(true);
         isBibbitPlaced = true;
     }
 
@@ -48,6 +50,7 @@ public class BibbitsMananger : MonoBehaviour {
     {
         if (m_CurrentBibbit.GetComponent<VRTK_InteractableObject>().IsGrabbed())
         {
+            m_BibbitHoles[m_CurrentHole].GetComponentInChildren<SecretHoleBehaviour>().SetAwakeVibration(false);
             isBibbitPlaced = false;
         } 
     }
