@@ -18,13 +18,13 @@ public class Bibbit_Behaviour : MonoBehaviour {
         m_InterObj = gameObject.GetComponent<VRTK_InteractableObject>();
         if (m_InterObj !=  null)
         {
-            Debug.Log("Script Located");
+            //Debug.Log("Script Located");
         }
 
         m_AudioSource = gameObject.GetComponent<AudioSource>();
         if (m_InterObj != null)
         {
-            Debug.Log("Audio Source Located");
+            //Debug.Log("Audio Source Located");
             SetNewAudio(m_IdleAudio, .5f, true);
             m_IsStillIdle = true;
         }
@@ -35,14 +35,14 @@ public class Bibbit_Behaviour : MonoBehaviour {
         if (m_InterObj.IsGrabbed() == true)
         {
             UnfreezeBibbit();
-            Debug.Log("Object Grabbed!");
+            //Debug.Log("Object Grabbed!");
             if (m_GrabbingObject == null)
             {
                 m_GrabbingObject = m_InterObj.GetGrabbingObject();
                 m_IsRumbleDead = false;
                 m_IsStillIdle = false;
                 m_IsStillGrabbed = false;
-                Debug.Log("Grabbed Controller Located");
+                //Debug.Log("Grabbed Controller Located");
             }
 
             if (m_IsStillGrabbed != true)

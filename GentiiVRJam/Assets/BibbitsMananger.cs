@@ -38,9 +38,10 @@ public class BibbitsMananger : MonoBehaviour {
 
     private void PlaceNewBibbit(int _bibbittype)
     {
-        Debug.Log("New Bibbit Placed");
+        //Debug.Log("New Bibbit Placed");
         m_CurrentHole = Random.Range(0, m_BibbitHoles.Length);
         m_CurrentBibbit = (GameObject)Instantiate(m_BibbitPrefabs[_bibbittype], m_BibbitHoles[m_CurrentHole].transform.FindChild("Bibbit Area").position, Quaternion.identity);
+        m_CurrentBibbit.name = Random.Range(0, 100).ToString();
         m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().FreezeBibbit();
         m_BibbitHoles[m_CurrentHole].GetComponentInChildren<SecretHoleBehaviour>().SetAwakeVibration(true);
         isBibbitPlaced = true;

@@ -16,7 +16,7 @@ public class SecretHoleBehaviour : MonoBehaviour {
         m_InterObj = gameObject.GetComponent<VRTK_InteractableObject>();
         if (m_InterObj != null)
         {
-            Debug.Log("Script Located");
+            //Debug.Log("Script Located");
         }
 
     }

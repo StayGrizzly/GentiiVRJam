@@ -1,37 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class CleanableRubble : MonoBehaviour {
+public class CleanableRubble : MonoBehaviour
+{
+    private GameObject m_CurrentRubble;
+    public GameObject[] m_RubblePrefabs;
 
+    private GameObject m_CurrentParticle;
+    public GameObject m_ParticlePrefab;
 
-    public GameObject CleanedPile_pref;
-    public GameObject CleaningParticles_pref;
-
-    private GameObject RubblePile;
-    private GameObject CurrentCleanedPile;
-    private GameObject CurrentParticles;
-    private bool isCleaned = false;
-
-    // Use this for initialization
-    void Start ()
+    int BibbitCount = 0;
+    
+    void Start()
     {
-        RubblePile = gameObject.transform.GetChild((gameObject.transform.childCount)-1).gameObject;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        m_CurrentRubble = (GameObject)Instantiate(m_RubblePrefabs[BibbitCount], gameObject.transform.position, Quaternion.identity);
+    }
 
-
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Bibbit" && isCleaned == false)
+        if (other.gameObject.tag == "Bibbit" && BibbitCount < 3)
         {
-            CurrentParticles = (GameObject)Instantiate(CleaningParticles_pref, RubblePile.transform.position, Quaternion.identity);
-            CurrentCleanedPile = (GameObject)Instantiate(CleanedPile_pref, RubblePile.transform.position, Quaternion.identity);
-            Destroy(RubblePile);
-            isCleaned = true;
+            BibbitCount++;
+            Destroy(other.gameObject);
+            Debug.Log("Bibbit Killed");
+            Debug.Log(BibbitCount);
+
+            CleanRubble();
+
         }
+    }
+
+    void CleanRubble()
+    {
+        Destroy(m_CurrentRubble);
+        Destroy(m_CurrentParticle);
+        m_CurrentRubble = (GameObject)Instantiate(m_RubblePrefabs[BibbitCount], new Vector3 (5, 1, 0), Quaternion.identity);
+        m_CurrentParticle = (GameObject)Instantiate(m_ParticlePrefab, new Vector3(5, 1, -1), Quaternion.identity);
     }
 }

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 
         if (m_LeftController != null)
         {
-            Debug.Log("Left is Loaded");
+           // Debug.Log("Left is Loaded");
         }
     }
 	
