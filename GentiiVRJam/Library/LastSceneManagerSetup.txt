@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Dodgeball 1.unity
+- path: Assets/Bibbits_holes_scene.unity
   isLoaded: 1
   isActive: 1

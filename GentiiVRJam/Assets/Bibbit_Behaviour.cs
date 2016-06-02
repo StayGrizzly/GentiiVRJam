@@ -13,11 +13,14 @@ public class Bibbit_Behaviour : MonoBehaviour {
     bool m_IsStillGrabbed = true;
     bool m_IsStillIdle = false;
 
+    GameObject m_TouchingObject;
 
+    /* FOR CHANGING BIBBIT MATERIAL
     GameObject m_BibbitMesh;
     GameObject m_Particles;
     GameObject m_Trails;
     GameObject m_EyeLid;
+    */
 
     void Start ()
     {
@@ -35,16 +38,25 @@ public class Bibbit_Behaviour : MonoBehaviour {
             m_IsStillIdle = true;
         }
 
+        /*
         m_BibbitMesh = gameObject.transform.FindChild("bibbit_mesh").gameObject;
         Debug.Log(m_BibbitMesh.transform.childCount);
 
         m_Particles = m_BibbitMesh.transform.FindChild("bibbit_mesh_particle").gameObject;
         m_Trails = m_BibbitMesh.transform.FindChild("bibbit_mesh_particle").gameObject;
         m_EyeLid = m_BibbitMesh.transform.FindChild("eyes_pivot").gameObject.transform.FindChild("eyeball_look").gameObject.transform.FindChild("eye_animation").gameObject.transform.FindChild("eye_lid").gameObject;
+        */
     }
 
 	void Update ()
     {
+
+        if (m_InterObj.IsTouched() == true && m_InterObj.IsGrabbed() != true)
+        {
+            m_TouchingObject = m_InterObj.GetTouchingObject();
+            m_TouchingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(1, 500);
+        }
+
         if (m_InterObj.IsGrabbed() == true)
         {
             UnfreezeBibbit();
@@ -58,15 +70,18 @@ public class Bibbit_Behaviour : MonoBehaviour {
                 //Debug.Log("Grabbed Controller Located");
             }
 
+
+
             if (m_IsStillGrabbed != true)
             {
                 SetNewAudio(m_GrabbedAudio, 1f, false);
                 m_IsStillGrabbed = true;
-            } 
+            }
 
             if (m_IsRumbleDead != true)
             {
-                m_GrabbingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(50, 200);
+
+                m_GrabbingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(50, 3000);
                 m_IsRumbleDead = true;
             }
 
