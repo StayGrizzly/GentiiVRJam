@@ -6,6 +6,7 @@ public class BibbitsMananger : MonoBehaviour {
 
     public GameObject[] m_BibbitHoles;
     public GameObject[] m_BibbitPrefabs;
+    public Material[] m_BibbitMaterials;
 
     int m_CurrentHole;
     private GameObject m_CurrentBibbit = null;
@@ -44,7 +45,11 @@ public class BibbitsMananger : MonoBehaviour {
         m_CurrentBibbit.name = Random.Range(0, 100).ToString();
         m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().FreezeBibbit();
         m_BibbitHoles[m_CurrentHole].GetComponentInChildren<SecretHoleBehaviour>().SetAwakeVibration(true);
+
+        Debug.Log("isBibbitPlaced: " + isBibbitPlaced);
         isBibbitPlaced = true;
+
+        //m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().SetMaterial(m_BibbitMaterials[Random.Range(0, m_BibbitMaterials.Length)]);
     }
 
     private void CheckHiddenBibbit()

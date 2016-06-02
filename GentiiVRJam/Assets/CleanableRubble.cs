@@ -10,11 +10,13 @@ public class CleanableRubble : MonoBehaviour
     private GameObject m_CurrentParticle;
     public GameObject m_ParticlePrefab;
 
+    public Vector3 m_RubblePoint;
+
     int BibbitCount = 0;
     
     void Start()
     {
-        m_CurrentRubble = (GameObject)Instantiate(m_RubblePrefabs[BibbitCount], gameObject.transform.position, Quaternion.identity);
+        m_CurrentRubble = (GameObject)Instantiate(m_RubblePrefabs[BibbitCount], m_RubblePoint, Quaternion.identity);
     }
 
     void OnTriggerEnter(Collider other)
@@ -35,7 +37,7 @@ public class CleanableRubble : MonoBehaviour
     {
         Destroy(m_CurrentRubble);
         Destroy(m_CurrentParticle);
-        m_CurrentRubble = (GameObject)Instantiate(m_RubblePrefabs[BibbitCount], new Vector3 (5, 1, 0), Quaternion.identity);
-        m_CurrentParticle = (GameObject)Instantiate(m_ParticlePrefab, new Vector3(5, 1, -1), Quaternion.identity);
+        m_CurrentRubble = (GameObject)Instantiate(m_RubblePrefabs[BibbitCount], m_RubblePoint, Quaternion.identity);
+        m_CurrentParticle = (GameObject)Instantiate(m_ParticlePrefab, m_RubblePoint, Quaternion.identity);
     }
 }

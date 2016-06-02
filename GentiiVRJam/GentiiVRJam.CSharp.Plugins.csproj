@@ -66,6 +66,9 @@
     <Compile Include="Assets\Plugins\openvr_api.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Shaders\UnityVC\StandardSpecularVC.shader" />
+    <None Include="Assets\Shaders\UnityVC\StandardVC.shader" />
+    <None Include="Assets\Shaders\UnityVC\UnityVC.cginc" />
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />

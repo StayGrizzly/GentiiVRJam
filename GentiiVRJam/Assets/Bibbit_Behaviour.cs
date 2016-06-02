@@ -13,7 +13,13 @@ public class Bibbit_Behaviour : MonoBehaviour {
     bool m_IsStillGrabbed = true;
     bool m_IsStillIdle = false;
 
-	void Start ()
+
+    GameObject m_BibbitMesh;
+    GameObject m_Particles;
+    GameObject m_Trails;
+    GameObject m_EyeLid;
+
+    void Start ()
     {
         m_InterObj = gameObject.GetComponent<VRTK_InteractableObject>();
         if (m_InterObj !=  null)
@@ -28,6 +34,13 @@ public class Bibbit_Behaviour : MonoBehaviour {
             SetNewAudio(m_IdleAudio, .5f, true);
             m_IsStillIdle = true;
         }
+
+        m_BibbitMesh = gameObject.transform.FindChild("bibbit_mesh").gameObject;
+        Debug.Log(m_BibbitMesh.transform.childCount);
+
+        m_Particles = m_BibbitMesh.transform.FindChild("bibbit_mesh_particle").gameObject;
+        m_Trails = m_BibbitMesh.transform.FindChild("bibbit_mesh_particle").gameObject;
+        m_EyeLid = m_BibbitMesh.transform.FindChild("eyes_pivot").gameObject.transform.FindChild("eyeball_look").gameObject.transform.FindChild("eye_animation").gameObject.transform.FindChild("eye_lid").gameObject;
     }
 
 	void Update ()
@@ -78,6 +91,18 @@ public class Bibbit_Behaviour : MonoBehaviour {
         m_AudioSource.loop = _isLooping;
         m_AudioSource.Play();
     }
+
+
+    /* CHANGING BIBBIT COLORS
+
+    public void SetMaterial(Material _material)
+    {
+        m_Particles.GetComponent<ParticleSystem>().GetComponent<Renderer>().material = _material;
+        m_Trails.GetComponent<ParticleSystem>().GetComponent<Renderer>().material = _material;
+        m_EyeLid.GetComponent<Renderer>().material = _material;
+    }
+
+    */
 
     public void FreezeBibbit()
     {
