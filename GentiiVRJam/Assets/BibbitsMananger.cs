@@ -6,7 +6,6 @@ public class BibbitsMananger : MonoBehaviour {
 
     public GameObject[] m_BibbitHoles;
     public GameObject[] m_BibbitPrefabs;
-    public Material[] m_BibbitMaterials;
 
     int m_CurrentHole;
     private GameObject m_CurrentBibbit = null;
