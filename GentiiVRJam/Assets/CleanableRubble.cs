@@ -26,7 +26,7 @@ public class CleanableRubble : MonoBehaviour
             BibbitCount++;
             Destroy(other.gameObject);
             Debug.Log("Bibbit Killed");
-            Debug.Log(BibbitCount);
+            //Debug.Log(BibbitCount);
 
             CleanRubble();
 

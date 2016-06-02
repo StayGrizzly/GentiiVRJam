@@ -30,7 +30,7 @@ public class SecretHoleBehaviour : MonoBehaviour {
             if (m_InterObj.IsTouched() == true)
             {
                 m_TouchingObject = m_InterObj.GetTouchingObject();
-                m_TouchingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(10, 200);
+                m_TouchingObject.GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(1, 125);
             }
         }
     }
