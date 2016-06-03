@@ -10,6 +10,9 @@ public class Bibbit_Behaviour : MonoBehaviour {
     AudioSource m_AudioSource;
     public AudioClip m_IdleAudio;
     public AudioClip m_GrabbedAudio;
+    public AudioClip m_BouncingAudio;
+    bool m_IsHidden = true;
+    bool m_IsWhistling = false;
     bool m_IsStillGrabbed = true;
     bool m_IsStillIdle = false;
 
@@ -50,7 +53,6 @@ public class Bibbit_Behaviour : MonoBehaviour {
 
 	void Update ()
     {
-
         if (m_InterObj.IsTouched() == true && m_InterObj.IsGrabbed() != true)
         {
             m_TouchingObject = m_InterObj.GetTouchingObject();
@@ -59,6 +61,8 @@ public class Bibbit_Behaviour : MonoBehaviour {
 
         if (m_InterObj.IsGrabbed() == true)
         {
+            m_IsWhistling = false;
+            m_IsHidden = false;
             UnfreezeBibbit();
             //Debug.Log("Object Grabbed!");
             if (m_GrabbingObject == null)
@@ -69,8 +73,6 @@ public class Bibbit_Behaviour : MonoBehaviour {
                 m_IsStillGrabbed = false;
                 //Debug.Log("Grabbed Controller Located");
             }
-
-
 
             if (m_IsStillGrabbed != true)
             {
@@ -86,7 +88,7 @@ public class Bibbit_Behaviour : MonoBehaviour {
             }
 
         }
-
+        /*
         if (m_InterObj.IsGrabbed() != true && m_IsStillIdle != true)
         {
             SetNewAudio(m_IdleAudio, 1f, true);
@@ -94,9 +96,31 @@ public class Bibbit_Behaviour : MonoBehaviour {
             m_IsStillGrabbed = false;
             m_GrabbingObject = null;
         }
-
+        */
+        if (m_InterObj.IsGrabbed() == false && m_IsHidden == false && m_IsWhistling == false)
+        {
+            SetNewAudio(m_BouncingAudio, .5f, true);
+            m_IsWhistling = true;
+            m_IsStillGrabbed = false;
+            m_GrabbingObject = null;
+        }
+        
       
 	}
+
+    public void AudioIO(bool _isAudioOn)
+    {
+        if(_isAudioOn == true)
+        {
+            m_AudioSource.Play();
+        }
+
+        else
+        {
+            //Debug.Log("m_AudioSource: " + m_AudioSource);
+            m_AudioSource.Stop();
+        }
+    }
 
     private void SetNewAudio(AudioClip _newAudioClip, float _newVolume, bool _isLooping)
     {
@@ -128,4 +152,5 @@ public class Bibbit_Behaviour : MonoBehaviour {
     {
         gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
+
 }

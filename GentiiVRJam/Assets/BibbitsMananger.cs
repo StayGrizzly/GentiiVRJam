@@ -9,6 +9,8 @@ public class BibbitsMananger : MonoBehaviour {
 
     int m_CurrentHole;
     private GameObject m_CurrentBibbit = null;
+    private GameObject m_PrevBibbit = null;
+    private bool m_IsPlaying = false;
 
 
     int BibbitType;
@@ -33,8 +35,25 @@ public class BibbitsMananger : MonoBehaviour {
         // Check if bibbit is still there
         // if bibbit is gone then confirm buffer
 
+        if (m_PrevBibbit != null)
+        {
+            if (m_PrevBibbit.GetComponent<VRTK_InteractableObject>().IsGrabbed())
+            {
+                //Debug.Log("IsGrabbed");
+                m_IsPlaying = false;
+                m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().AudioIO(false);
 
-	}
+            }
+
+            else if (m_PrevBibbit.GetComponent<VRTK_InteractableObject>().IsGrabbed() != true && m_IsPlaying == false)
+            {
+                //Debug.Log("IsntGrabbed");
+                m_IsPlaying = true;
+                m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().AudioIO(true);
+            }
+        }
+
+    }
 
     private void PlaceNewBibbit(int _bibbittype)
     {
@@ -45,7 +64,7 @@ public class BibbitsMananger : MonoBehaviour {
         m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().FreezeBibbit();
         m_BibbitHoles[m_CurrentHole].GetComponentInChildren<SecretHoleBehaviour>().SetAwakeVibration(true);
 
-        Debug.Log("isBibbitPlaced: " + isBibbitPlaced);
+        //Debug.Log("isBibbitPlaced: " + isBibbitPlaced);
         isBibbitPlaced = true;
 
         //m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().SetMaterial(m_BibbitMaterials[Random.Range(0, m_BibbitMaterials.Length)]);
@@ -57,6 +76,7 @@ public class BibbitsMananger : MonoBehaviour {
         {
             m_BibbitHoles[m_CurrentHole].GetComponentInChildren<SecretHoleBehaviour>().SetAwakeVibration(false);
             isBibbitPlaced = false;
+            m_PrevBibbit = m_CurrentBibbit;
         } 
     }
 
