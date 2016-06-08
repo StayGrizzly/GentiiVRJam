@@ -112,6 +112,12 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="ShaderForge">
+      <HintPath>Assets\ShaderForge\Editor\ShaderForge.dll</HintPath>
+    </Reference>
+    <Reference Include="ShaderForge">
+      <HintPath>Assets\ShaderForge\Editor\Code\ShaderForge.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="GentiiVRJam.CSharp.Plugins.csproj">
