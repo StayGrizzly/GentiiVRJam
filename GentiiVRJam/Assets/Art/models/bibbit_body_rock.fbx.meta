@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: af0ce51f4dbeabf4e8162db909ba3369
-timeCreated: 1464799413
+guid: 1ce656680036ac14ea5bef730743739c
+timeCreated: 1465414226
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: bibbits_body_sphere
+    4300000: bibbits_body_sphere1
     6400000: //RootNode
   materials:
     importMaterials: 1
@@ -52,7 +52,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
