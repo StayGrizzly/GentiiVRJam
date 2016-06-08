@@ -34,7 +34,7 @@ public class BibbitsMananger : MonoBehaviour {
         CheckHiddenBibbit();
         // Check if bibbit is still there
         // if bibbit is gone then confirm buffer
-
+        /*
         if (m_PrevBibbit != null)
         {
             if (m_PrevBibbit.GetComponent<VRTK_InteractableObject>().IsGrabbed())
@@ -52,7 +52,7 @@ public class BibbitsMananger : MonoBehaviour {
                 m_CurrentBibbit.GetComponent<Bibbit_Behaviour>().AudioIO(true);
             }
         }
-
+        */
     }
 
     private void PlaceNewBibbit(int _bibbittype)
