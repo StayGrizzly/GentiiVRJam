@@ -6,6 +6,15 @@ public class GameManager : MonoBehaviour {
     VRTK_ControllerEvents m_LeftController;
     VRTK_ControllerEvents m_RightController;
 
+    bool m_IsJengaBlocked = false;
+    public GameObject m_JengaBlock;
+    private GameObject m_LastBlock;
+
+    public GameObject m_FarMom;
+    public GameObject m_CloseMom;
+    bool m_IsMomClose = false;
+
+
     // Use this for initialization
     void Start ()
     {
@@ -25,5 +34,34 @@ public class GameManager : MonoBehaviour {
         {
             Application.LoadLevel(Application.loadedLevel);
         }
+
+        if (m_LeftController.gripPressed == true && m_IsJengaBlocked == false)
+        {
+            m_LastBlock = (GameObject)Instantiate(m_JengaBlock, new Vector3(0, 2.5f, 0), Quaternion.identity);
+            m_IsJengaBlocked = true;
+        }
+
+        if (m_LeftController.gripPressed == false)
+        {
+            m_IsJengaBlocked = false;
+        }
+
+        if (m_RightController.gripPressed == true && m_IsMomClose == false)
+        {
+            m_FarMom.GetComponent<Renderer>().enabled = false;
+            m_CloseMom.GetComponent<Renderer>().enabled = true;
+            m_IsMomClose = true;
+        }
+
+        if (m_RightController.gripPressed == false && m_IsMomClose == true)
+        {
+            m_FarMom.GetComponent<Renderer>().enabled = true;
+            m_CloseMom.GetComponent<Renderer>().enabled = false;
+            m_IsMomClose = false;
+        }
+
+
+
+
     }
 }
