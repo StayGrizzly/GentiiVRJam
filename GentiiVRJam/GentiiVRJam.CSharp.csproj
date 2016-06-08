@@ -154,7 +154,6 @@
     <Compile Include="Assets\SteamVR_Unity_Toolkit\Scripts\VRTK_PlayerPresence.cs" />
     <Compile Include="Assets\SteamVR_Unity_Toolkit\Scripts\VRTK_SimplePointer.cs" />
     <Compile Include="Assets\SteamVR_Unity_Toolkit\Scripts\VRTK_TouchpadWalking.cs" />
-    <Compile Include="Assets\elapsedtime.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\UnityVC\StandardSpecularVC.shader" />
