@@ -5,25 +5,34 @@ using System.Collections.Generic;
 public class BibbitLine : MonoBehaviour {
 
     // CUSTOMIZABLE VARIABLES
-    public List<GameObject> m_LinePoints;
-    public GameObject m_Bibbit;
+    public GameObject m_Spawn;
+    public List<GameObject> m_LineFlags;
+    public List<GameObject> m_Bibbit_Types;
     public int m_MaxBibbits;
-    public float m_BibbitSpeed = 1.0F;
-    public float m_BibbitSpawnRate;
+    public float m_BibbitBaseSpeed = 1.0F;
+    public float m_BibbitSpeedRange;
+    public float m_BibbitBaseSpawnRate;
+    public float m_BibbitSpawnRange;
 
     // BIBBIT VARIABLES
-    private GameObject m_Spawn;
+
     private List<GameObject> m_SpawnedBibbits = new List<GameObject>();
 
     // BIBBIT TIMER
     private float m_StartTime;
     private float m_ElapsedTime;
+    private float m_TrueSpawnRate;
+                                                                                                                    /*
+    XXXXXXXXXXXXXXXXXXXXXXX
+    || THE BEEF IS HERE  ||
+    XXXXXXXXXXXXXXXXXXXXXXX                                                                 
+                                                                                                                    */
 
     // THE BEEF
     void Start ()
     {
-        m_Spawn = transform.FindChild("Spawn").gameObject;
         m_StartTime = Time.time;
+        m_TrueSpawnRate = m_BibbitBaseSpawnRate;
 	}
 	
     // MORE BEEF
@@ -32,10 +41,11 @@ public class BibbitLine : MonoBehaviour {
         m_ElapsedTime = Time.time - m_StartTime;
         if (m_SpawnedBibbits.Count < m_MaxBibbits)
         {
-            if (m_ElapsedTime >= m_BibbitSpawnRate || m_SpawnedBibbits.Count == 0)
+            if (m_ElapsedTime >= m_TrueSpawnRate || m_SpawnedBibbits.Count == 0)
             {
                 SpawnNewBibbit();
                 m_StartTime = Time.time;
+                m_TrueSpawnRate = m_BibbitBaseSpawnRate + Random.Range(-m_BibbitBaseSpawnRate, m_BibbitSpawnRange);
             }
         }
 
@@ -43,16 +53,18 @@ public class BibbitLine : MonoBehaviour {
 
 	}
 
+    // CREATES A BIBBIT AND SETS PATHING
     void SpawnNewBibbit()
     {
-        GameObject temp = (GameObject)Instantiate(m_Bibbit, m_Spawn.transform.position, Quaternion.identity);
+        GameObject temp = (GameObject)Instantiate(m_Bibbit_Types[Random.Range(0, m_Bibbit_Types.Count)], m_Spawn.transform.position, Quaternion.identity);
         m_SpawnedBibbits.Add(temp);
         temp.AddComponent<Cleaning_Bibbit>();
-        temp.GetComponent<Cleaning_Bibbit>().SetSpeed(m_BibbitSpeed);
-        temp.GetComponent<Cleaning_Bibbit>().AddToTravelFlags(m_Spawn.transform);
+        temp.GetComponent<Cleaning_Bibbit>().SetSpeed(m_BibbitBaseSpeed + Random.Range(0.0f,m_BibbitSpeedRange));
+        temp.GetComponent<Cleaning_Bibbit>().AddToTravelFlags(m_Spawn.GetComponent<LineFlag>().GetRandomFlagTransform());
         SetToPath(temp);
     }
 
+    // CHECKS IF ANY BIBBITS REACHES THE END
     void CheckIfBibbitsDone()
     {
         for (int i = 0; i < m_SpawnedBibbits.Count; ++i)
@@ -69,9 +81,9 @@ public class BibbitLine : MonoBehaviour {
     // ADDS FLAGS TO INDIVIDUAL SPAWNED BIBBITS
     void SetToPath(GameObject _bibbit)
     {
-        for (int i = 0; i < m_LinePoints.Count; ++i)
+        for (int i = 0; i < m_LineFlags.Count; ++i)
         {
-            _bibbit.GetComponent<Cleaning_Bibbit>().AddToTravelFlags(m_LinePoints[i].transform);
+            _bibbit.GetComponent<Cleaning_Bibbit>().AddToTravelFlags(m_LineFlags[i].GetComponent<LineFlag>().GetRandomFlagTransform());
         }
     }
 }

@@ -19,11 +19,14 @@ public class Cleaning_Bibbit : MonoBehaviour {
     private bool m_CompletedRoute = false;
     private int m_ForwardReps = 0;
     private int m_BackwardReps = 0;
-    
+                                                                                                /*
+    XXXXXXXXXXXXXXXXXXXXXXX
+    || THE BEEF IS HERE  ||
+    XXXXXXXXXXXXXXXXXXXXXXX                                                                                                                                                   */
+
 
     // GETTERS AND SETTERS
     public bool GetIfCompletedRoute() { return m_CompletedRoute; }
-
     public void SetSpeed(float _speed) { m_MovementSpeed = _speed; }
     public void AddToTravelFlags(Transform _transform) { m_TravelFlags.Add(_transform); }
 
@@ -36,6 +39,9 @@ public class Cleaning_Bibbit : MonoBehaviour {
     // MORE BEEF
 	void Update ()
     {
+
+        
+
         if (m_TravelFlags.Count > 0 || m_BackFlags.Count > 0)
         {
             //Debug.Log("There are flags!");
@@ -128,6 +134,7 @@ public class Cleaning_Bibbit : MonoBehaviour {
             // isDoneWithMove = true;
             m_StartTime = Time.time;
             m_IsDoneMoving = true;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
