@@ -50,7 +50,6 @@ public class BibbitLine : MonoBehaviour {
         }
 
         CheckIfBibbitsDone();
-
 	}
 
     // CREATES A BIBBIT AND SETS PATHING
