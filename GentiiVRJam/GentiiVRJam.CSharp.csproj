@@ -165,6 +165,7 @@
     <Compile Include="Assets\SteamVR_Unity_Toolkit\Scripts\VRTK_TouchpadWalking.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Shaders\Standard.shader" />
     <None Include="Assets\Shaders\UnityVC\StandardSpecularVC.shader" />
     <None Include="Assets\Shaders\UnityVC\StandardVC.shader" />
     <None Include="Assets\Shaders\UnityVC\UnityVC.cginc" />

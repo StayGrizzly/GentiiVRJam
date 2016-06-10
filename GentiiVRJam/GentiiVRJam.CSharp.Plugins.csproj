@@ -87,6 +87,7 @@
     <Compile Include="Assets\Standard Assets\Effects\CinematicEffects(BETA)\TonemappingColorGrading\TonemappingColorGrading.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Shaders\Standard.shader" />
     <None Include="Assets\Shaders\UnityVC\StandardSpecularVC.shader" />
     <None Include="Assets\Shaders\UnityVC\StandardVC.shader" />
     <None Include="Assets\Shaders\UnityVC\UnityVC.cginc" />
