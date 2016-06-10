@@ -28,7 +28,19 @@ public class Cleaning_Bibbit : MonoBehaviour {
     // GETTERS AND SETTERS
     public bool GetIfCompletedRoute() { return m_CompletedRoute; }
     public void SetSpeed(float _speed) { m_MovementSpeed = _speed; }
-    public void AddToTravelFlags(Transform _transform) { m_TravelFlags.Add(_transform); }
+
+
+    public void AddToTravelFlags(Transform _transform)
+    {
+        m_TravelFlags.Add(_transform);
+        //Physics.IgnoreCollision(_transform.gameObject.transform.parent.FindChild("Sign").gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+        if (_transform.gameObject.transform.parent.gameObject.name != "SPAWN")
+        {
+            Physics.IgnoreCollision(_transform.parent.FindChild("Sign").gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+            Physics.IgnoreCollision(_transform.parent.FindChild("Sign").FindChild("Ground Collider").gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+        }
+
+    }
 
     // THE BEEF
 	void Start ()
@@ -39,8 +51,6 @@ public class Cleaning_Bibbit : MonoBehaviour {
     // MORE BEEF
 	void Update ()
     {
-
-        
 
         if (m_TravelFlags.Count > 0 || m_BackFlags.Count > 0)
         {

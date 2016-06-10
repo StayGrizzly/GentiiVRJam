@@ -6,7 +6,18 @@ using System.Collections.Generic;
 public class LineFlag : MonoBehaviour {
 
     List<Transform> m_FlagOptions = new List<Transform>();
-    
+    bool m_IsGrounded = false;
+
+    public bool GetIfObjGrabbed()
+    {
+        return transform.FindChild("Sign").GetComponent<VRTK_InteractableObject>().IsGrabbed();
+    }
+
+    public bool GetIfGrounded()
+    {
+        return transform.FindChild("Sign").gameObject.transform.FindChild("Ground Collider").GetComponent<GroundCollider>().GetIsGrounded();
+    }
+
     void Start()
     {
         for (int i = 0; i < transform.childCount; ++i)
@@ -21,6 +32,4 @@ public class LineFlag : MonoBehaviour {
     {
         return m_FlagOptions[(int)Random.Range(0, m_FlagOptions.Count)];
     }
-
-
 }
