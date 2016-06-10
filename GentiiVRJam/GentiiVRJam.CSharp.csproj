@@ -110,6 +110,8 @@
     <Compile Include="Assets\Examples\Scripts\VRTK_ControllerPointerEvents_ListenerExample.cs" />
     <Compile Include="Assets\Examples\Scripts\Whirlygig.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\GroundCollider.cs" />
+    <Compile Include="Assets\IgnoreBibbits.cs" />
     <Compile Include="Assets\LineFlag.cs" />
     <Compile Include="Assets\OBJExport\OBJExporter.cs" />
     <Compile Include="Assets\SecretHoleBehaviour.cs" />

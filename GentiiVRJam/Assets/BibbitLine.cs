@@ -38,19 +38,45 @@ public class BibbitLine : MonoBehaviour {
     // MORE BEEF
 	void Update ()
     {
+        FlagSearch();
+
         m_ElapsedTime = Time.time - m_StartTime;
-        if (m_SpawnedBibbits.Count < m_MaxBibbits)
+
+        if (m_LineFlags.Count > 0)
         {
-            if (m_ElapsedTime >= m_TrueSpawnRate || m_SpawnedBibbits.Count == 0)
+            if (m_SpawnedBibbits.Count < m_MaxBibbits)
             {
-                SpawnNewBibbit();
-                m_StartTime = Time.time;
-                m_TrueSpawnRate = m_BibbitBaseSpawnRate + Random.Range(-m_BibbitBaseSpawnRate, m_BibbitSpawnRange);
+                if (m_ElapsedTime >= m_TrueSpawnRate || m_SpawnedBibbits.Count == 0)
+                {
+                    SpawnNewBibbit();
+                    m_StartTime = Time.time;
+                    m_TrueSpawnRate = m_BibbitBaseSpawnRate + Random.Range(-m_BibbitBaseSpawnRate, m_BibbitSpawnRange);
+                }
             }
         }
 
         CheckIfBibbitsDone();
 	}
+
+
+    void FlagSearch()
+    {
+        GameObject[] allFlags = GameObject.FindGameObjectsWithTag("Flag");
+
+        for (int i = 0; i < allFlags.Length; ++i)
+        {
+            if (allFlags[i].GetComponent<LineFlag>().GetIfObjGrabbed() == false)
+            {
+                if (allFlags[i].GetComponent<LineFlag>().GetIfGrounded())
+                {
+                    Debug.Log("Flag Found!");
+                    m_LineFlags.Add(allFlags[i]);
+                    allFlags[i].tag = "Discovered";
+                }
+            }
+        }
+
+    }
 
     // CREATES A BIBBIT AND SETS PATHING
     void SpawnNewBibbit()
