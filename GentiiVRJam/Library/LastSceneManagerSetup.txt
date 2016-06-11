@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Examples/003_Controller_SimplePointer.unity
+- path: Assets/Bibbits_planting_scene.unity
   isLoaded: 1
   isActive: 1
