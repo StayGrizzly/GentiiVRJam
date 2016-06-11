@@ -7,7 +7,7 @@ public class IgnoreBibbits : MonoBehaviour {
     {
         if (gameObject.name != "SPAWN")
             if (col.gameObject.tag == "Bibbit")
-               
+                Debug.Log("Bibbit hit Flag");
     }
     
 }

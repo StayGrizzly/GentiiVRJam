@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Dodgeball 2.unity
+- path: Assets/Examples/003_Controller_SimplePointer.unity
   isLoaded: 1
   isActive: 1
