@@ -9,7 +9,7 @@ public class GroundCollider : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log(col.gameObject.name + " Entered " + gameObject.name + "'s Trigger!");
+        // Debug.Log(col.gameObject.name + " Entered " + gameObject.name + "'s Trigger!");
 
         if (col.gameObject.tag == "Ground")
         {
@@ -19,7 +19,7 @@ public class GroundCollider : MonoBehaviour {
 
     void OnTriggerExit(Collider col)
     {
-        Debug.Log(col.gameObject.name + " Exited " + gameObject.name + "'s Trigger!");
+        // Debug.Log(col.gameObject.name + " Exited " + gameObject.name + "'s Trigger!");
 
         if (col.gameObject.tag == "Ground")
         {

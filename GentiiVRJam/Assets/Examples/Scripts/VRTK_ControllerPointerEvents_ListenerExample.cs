@@ -21,7 +21,7 @@ public class VRTK_ControllerPointerEvents_ListenerExample : MonoBehaviour {
     void DebugLogger(uint index, string action, Transform target, float distance, Vector3 tipPosition)
     {
         string targetName = (target ? target.name : "<NO VALID TARGET>");
-        Debug.Log("Controller on index '" + index + "' is " + action + " at a distance of " + distance + " on object named " + targetName + " - the pointer tip position is/was: " +tipPosition);
+        //Debug.Log("Controller on index '" + index + "' is " + action + " at a distance of " + distance + " on object named " + targetName + " - the pointer tip position is/was: " +tipPosition);
     }
 
     void DoPointerIn(object sender, WorldPointerEventArgs e)

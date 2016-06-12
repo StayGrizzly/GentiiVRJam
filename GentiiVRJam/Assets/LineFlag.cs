@@ -22,8 +22,12 @@ public class LineFlag : MonoBehaviour {
     {
         for (int i = 0; i < transform.childCount; ++i)
         {
-            m_FlagOptions.Add(transform.GetChild(i));
-            //Debug.Log(m_FlagOptions[i].gameObject.name);
+            if(transform.GetChild(i).name != "Sign")
+            {
+                Debug.Log(transform.name + "'s " + transform.GetChild(i).name);
+                m_FlagOptions.Add(transform.GetChild(i));
+            }
+            // Debug.Log(m_FlagOptions[i].gameObject.name);
         }
     }
 

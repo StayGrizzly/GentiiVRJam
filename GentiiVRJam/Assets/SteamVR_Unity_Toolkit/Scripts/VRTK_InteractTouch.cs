@@ -78,7 +78,7 @@ public class VRTK_InteractTouch : MonoBehaviour {
     {
         if (GetComponent<VRTK_ControllerActions>() == null)
         {
-            Debug.LogError("VRTK_InteractTouch is required to be attached to a SteamVR Controller that has the VRTK_ControllerActions script attached to it");
+            //Debug.LogError("VRTK_InteractTouch is required to be attached to a SteamVR Controller that has the VRTK_ControllerActions script attached to it");
             return;
         }
 

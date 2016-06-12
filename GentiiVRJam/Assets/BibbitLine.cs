@@ -69,13 +69,17 @@ public class BibbitLine : MonoBehaviour {
             {
                 if (allFlags[i].GetComponent<LineFlag>().GetIfGrounded())
                 {
-                    Debug.Log("Flag Found!");
+                    // Debug.Log("Flag Found!");
                     m_LineFlags.Add(allFlags[i]);
                     allFlags[i].tag = "Discovered";
                 }
             }
-        }
 
+            else
+            {
+
+            }
+        }
     }
 
     // CREATES A BIBBIT AND SETS PATHING
