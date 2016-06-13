@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class LineFlag : MonoBehaviour {
 
+    GameObject m_Sign;
     List<Transform> m_FlagOptions = new List<Transform>();
     bool m_IsGrounded = false;
 
@@ -20,15 +21,33 @@ public class LineFlag : MonoBehaviour {
 
     void Start()
     {
-        for (int i = 0; i < transform.childCount; ++i)
+        if (gameObject.name != "SPAWN")
         {
-            if(transform.GetChild(i).name != "Sign")
+            m_Sign = transform.FindChild("Sign").gameObject;
+
+            for (int i = 0; i < m_Sign.transform.childCount; ++i)
             {
-                //Debug.Log(transform.name + "'s " + transform.GetChild(i).name);
-                m_FlagOptions.Add(transform.GetChild(i));
+                if (m_Sign.transform.GetChild(i).name != "Ground Collider")
+                {
+                    Debug.Log(m_Sign.transform.name + "'s " + m_Sign.transform.GetChild(i).name);
+                    m_FlagOptions.Add(m_Sign.transform.GetChild(i));
+                }
             }
-            // Debug.Log(m_FlagOptions[i].gameObject.name);
         }
+
+        else
+        {
+            for (int i = 0; i < transform.childCount; ++i)
+            {
+                if (transform.GetChild(i).name != "Sign")
+                {
+                    Debug.Log(transform.name + "'s " + transform.GetChild(i).name);
+                    m_FlagOptions.Add(transform.GetChild(i));
+                }
+            }
+        }
+
+
     }
 
 
