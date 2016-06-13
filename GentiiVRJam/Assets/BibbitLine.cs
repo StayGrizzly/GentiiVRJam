@@ -27,7 +27,6 @@ public class BibbitLine : MonoBehaviour {
     || THE BEEF IS HERE  ||
     XXXXXXXXXXXXXXXXXXXXXXX                                                                 
                                                                                                                     */
-
     // THE BEEF
     void Start ()
     {
@@ -39,6 +38,7 @@ public class BibbitLine : MonoBehaviour {
 	void Update ()
     {
         FlagSearch();
+        FlagCheck();
 
         m_ElapsedTime = Time.time - m_StartTime;
 
@@ -58,7 +58,7 @@ public class BibbitLine : MonoBehaviour {
         CheckIfBibbitsDone();
 	}
 
-
+    // SEARCHES FOR NEW FLAGS
     void FlagSearch()
     {
         GameObject[] allFlags = GameObject.FindGameObjectsWithTag("Flag");
@@ -74,10 +74,38 @@ public class BibbitLine : MonoBehaviour {
                     allFlags[i].tag = "Discovered";
                 }
             }
+        }
+    }
 
-            else
+    // CHECKS IF ANY FLAGS ARE GRABBED
+    void FlagCheck()
+    {
+        bool m_AreAnyGrabbed = false;
+
+        for (int i = 0; i < m_LineFlags.Count; ++i)
+        {
+            if (m_LineFlags[i].GetComponent<LineFlag>().GetIfObjGrabbed() == true)
             {
+                m_AreAnyGrabbed = true;
+            }
+        }
 
+        if (m_AreAnyGrabbed == true)
+        {
+            //Debug.Log("A Flag Is Grabbed");
+
+            for (int i = 0; i < m_SpawnedBibbits.Count; ++i)
+            {
+                m_SpawnedBibbits[i].GetComponent<Cleaning_Bibbit>().Stop();
+            }
+        }
+        else
+        {
+            //Debug.Log("No Flags are Grabbed");
+
+            for (int i = 0; i < m_SpawnedBibbits.Count; ++i)
+            {
+                m_SpawnedBibbits[i].GetComponent<Cleaning_Bibbit>().Play();
             }
         }
     }

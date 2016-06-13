@@ -4,7 +4,7 @@ using System.Collections;
 public class DirtEvent : MonoBehaviour
 {
 
-
+    public GameObject m_Seed;
     private GameObject m_DirtObj;
     private int m_ElapsedBibbit;
     private bool m_HasBeenPlayed = false;
@@ -47,6 +47,7 @@ public class DirtEvent : MonoBehaviour
             if (m_ElapsedBibbit >= 20 && m_DirtObj.GetComponent<Animation>().isPlaying != true && m_HasBeenPlayed != true)
             {
                 Debug.Log("Time for a cleanup!");
+                GameObject newSeed = (GameObject)Instantiate(m_Seed, new Vector3(transform.position.x, 1f, transform.position.z), Quaternion.identity);
 
                 m_DirtObj.GetComponent<Animation>().Play();
                 m_HasBeenPlayed = true;

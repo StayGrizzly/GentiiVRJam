@@ -19,6 +19,7 @@ public class Cleaning_Bibbit : MonoBehaviour {
     private bool m_CompletedRoute = false;
     private int m_ForwardReps = 0;
     private int m_BackwardReps = 0;
+    private bool m_PlayRoute = true;
                                                                                                 /*
     XXXXXXXXXXXXXXXXXXXXXXX
     || THE BEEF IS HERE  ||
@@ -54,17 +55,29 @@ public class Cleaning_Bibbit : MonoBehaviour {
 
         if (m_TravelFlags.Count > 0 || m_BackFlags.Count > 0)
         {
-            //Debug.Log("There are flags!");
+            if(m_PlayRoute == true)
+            {
+                if (m_IsMovingForward)
+                    MoveForward();
 
-            if (m_IsMovingForward)
-                MoveForward();
+                else
+                    MoveBackward();
+            }
 
-            else
-                MoveBackward();
         }
 
         if (m_ForwardReps == m_BackwardReps && m_ForwardReps > 0)
             m_CompletedRoute = true;
+    }
+
+    public void Stop()
+    {
+        m_PlayRoute = false;
+    }
+
+    public void Play()
+    {
+        m_PlayRoute = true;
     }
 
     // MOVE BIBBIT FORWARD ON PATH

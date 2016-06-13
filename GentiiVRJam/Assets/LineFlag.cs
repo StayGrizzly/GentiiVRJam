@@ -24,7 +24,7 @@ public class LineFlag : MonoBehaviour {
         {
             if(transform.GetChild(i).name != "Sign")
             {
-                Debug.Log(transform.name + "'s " + transform.GetChild(i).name);
+                //Debug.Log(transform.name + "'s " + transform.GetChild(i).name);
                 m_FlagOptions.Add(transform.GetChild(i));
             }
             // Debug.Log(m_FlagOptions[i].gameObject.name);
