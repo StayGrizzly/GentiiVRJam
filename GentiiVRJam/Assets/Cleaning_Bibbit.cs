@@ -34,13 +34,13 @@ public class Cleaning_Bibbit : MonoBehaviour {
     public void AddToTravelFlags(Transform _transform)
     {
         m_TravelFlags.Add(_transform);
-        //Physics.IgnoreCollision(_transform.gameObject.transform.parent.FindChild("Sign").gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
+        /*Physics.IgnoreCollision(_transform.gameObject.transform.parent.FindChild("Sign").gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
         if (_transform.gameObject.transform.parent.gameObject.name != "SPAWN")
         {
             Physics.IgnoreCollision(_transform.parent.FindChild("Sign").gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
             Physics.IgnoreCollision(_transform.parent.FindChild("Sign").FindChild("Ground Collider").gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
         }
-
+        */
     }
 
     // THE BEEF

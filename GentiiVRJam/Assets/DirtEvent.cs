@@ -3,15 +3,15 @@ using System.Collections;
 
 public class DirtEvent : MonoBehaviour
 {
-
+    public GameObject m_ParticleFX;
     public GameObject m_Seed;
     private GameObject m_DirtObj;
     private int m_ElapsedBibbit;
     private bool m_HasBeenPlayed = false;
 
     // !LEGACY! LERPING VARIABLES
-    public float m_MovementRate;
-    public float m_MovementSpeed;
+    //public float m_MovementRate;
+    //public float m_MovementSpeed;
     private float m_StartTime;
     private float m_JourneyLength;
     private bool m_IsLerpOver = true;
@@ -33,6 +33,7 @@ public class DirtEvent : MonoBehaviour
     // TRIGGERS 
     void OnTriggerExit(Collider col)
     {
+        Debug.Log(col.gameObject.name);
         if (col.gameObject.tag == "Bibbit")
         {
             /* LEGACY
@@ -59,7 +60,7 @@ public class DirtEvent : MonoBehaviour
         }
     }
     
-    // !LEGACY! MOVES DIRT PILE DOWN USING TWO GENERATED EMPTY GAMEOBJECTS
+    /* !LEGACY! MOVES DIRT PILE DOWN USING TWO GENERATED EMPTY GAMEOBJECTS
     void MoveDirtPile()
     {
         if (CurrentPos.transform.position != gameObject.transform.position)
@@ -103,7 +104,7 @@ public class DirtEvent : MonoBehaviour
             Debug.Log("It's Done Moving!");
             m_IsLerpOver = true;
         }
-    }
+    }*/
     
 
 }
