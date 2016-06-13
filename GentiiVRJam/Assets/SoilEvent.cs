@@ -9,7 +9,8 @@ public class SoilEvent : MonoBehaviour {
     {
         if(col.gameObject.tag == "Seed")
         {
-            GameObject wand = (GameObject)Instantiate(m_VineWand, col.gameObject.transform.position, Quaternion.identity);
+            GameObject wand = (GameObject)Instantiate(m_VineWand, transform.position, Quaternion.identity);
+            wand.transform.GetChild(0).GetComponent<Animation>().Play();
             Destroy(col.gameObject);
         }
     }

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Bibbits_planting_scene.unity
+- path: Assets/Dodgeball 3.unity
   isLoaded: 1
   isActive: 1

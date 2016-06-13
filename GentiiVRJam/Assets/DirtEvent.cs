@@ -6,6 +6,7 @@ public class DirtEvent : MonoBehaviour
     public GameObject m_ParticleFX;
     public GameObject m_Seed;
     private GameObject m_DirtObj;
+    private GameObject m_CurrentParticle;
     private int m_ElapsedBibbit;
     private bool m_HasBeenPlayed = false;
 
@@ -49,14 +50,21 @@ public class DirtEvent : MonoBehaviour
             {
                 Debug.Log("Time for a cleanup!");
                 GameObject newSeed = (GameObject)Instantiate(m_Seed, new Vector3(transform.position.x, 1f, transform.position.z), Quaternion.identity);
-
+                m_CurrentParticle = (GameObject)Instantiate(m_ParticleFX, transform.position, Quaternion.identity);
                 m_DirtObj.GetComponent<Animation>().Play();
                 m_HasBeenPlayed = true;
+
                 //MoveDirtPile();          
             }
+        }
+    }
 
-            
-            
+    void Update()
+    {
+        if(m_HasBeenPlayed == true && m_DirtObj.GetComponent<Animation>().isPlaying != true)
+        {
+            m_CurrentParticle.GetComponent<ParticleSystem>().Stop();
+            Destroy(gameObject);
         }
     }
     
