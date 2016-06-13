@@ -5,8 +5,8 @@ public class SoilEvent : MonoBehaviour {
 
     public GameObject m_VineWand;
     public GameObject m_ParticleFX;
-    GameObject wand;
-    private bool m_HasAnimPlayed = false;
+    private GameObject wand;
+    private GameObject particle;
 
     void OnTriggerEnter(Collider col)
     {
@@ -14,7 +14,7 @@ public class SoilEvent : MonoBehaviour {
         {
             Destroy(col.gameObject);
             wand = (GameObject)Instantiate(m_VineWand, new Vector3(transform.position.x, transform.position.y+.25f, transform.position.z), Quaternion.identity);
-            GameObject particle = (GameObject)Instantiate(m_ParticleFX, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.Euler(-90, 0, 0));
+            particle = (GameObject)Instantiate(m_ParticleFX, new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z), Quaternion.Euler(-90, 0, 0));
         }
     }
     /*
