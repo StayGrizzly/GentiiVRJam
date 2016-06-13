@@ -161,6 +161,7 @@
     <Compile Include="Assets\SteamVR_Unity_Toolkit\Scripts\VRTK_TouchpadWalking.cs" />
     <Compile Include="Assets\TeleportToObject.cs" />
     <Compile Include="Assets\TeleporterBehaviour.cs" />
+    <Compile Include="Assets\VinePuller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\Standard.shader" />
