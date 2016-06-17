@@ -6,13 +6,13 @@ public class GameManager : MonoBehaviour {
     VRTK_ControllerEvents m_LeftController;
     VRTK_ControllerEvents m_RightController;
 
-    bool m_IsJengaBlocked = false;
-    public GameObject m_JengaBlock;
-    private GameObject m_LastBlock;
+    //bool m_IsJengaBlocked = false;
+    //public GameObject m_JengaBlock;
+    //private GameObject m_LastBlock;
 
-    public GameObject m_FarMom;
-    public GameObject m_CloseMom;
-    bool m_IsMomClose = false;
+    //public GameObject m_FarMom;
+    //public GameObject m_CloseMom;
+    //bool m_IsMomClose = false;
 
 
     // Use this for initialization
@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour {
         {
             Application.LoadLevel(Application.loadedLevel);
         }
+
+        /*
 
         if (m_LeftController.gripPressed == true && m_IsJengaBlocked == false)
         {
@@ -59,9 +61,7 @@ public class GameManager : MonoBehaviour {
             m_CloseMom.GetComponent<Renderer>().enabled = false;
             m_IsMomClose = false;
         }
-
-
-
+        */
 
     }
 }

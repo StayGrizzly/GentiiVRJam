@@ -5,6 +5,7 @@ public class DirtEvent : MonoBehaviour
 {
     public GameObject m_ParticleFX;
     public GameObject m_Seed;
+    private GameObject newSeed;
     private GameObject m_DirtObj;
     private GameObject m_CurrentParticle;
     private int m_ElapsedBibbit;

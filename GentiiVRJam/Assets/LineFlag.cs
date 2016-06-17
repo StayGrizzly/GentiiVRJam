@@ -27,9 +27,9 @@ public class LineFlag : MonoBehaviour {
 
             for (int i = 0; i < m_Sign.transform.childCount; ++i)
             {
-                if (m_Sign.transform.GetChild(i).name != "Ground Collider")
+                if (m_Sign.transform.GetChild(i).name != "Ground Collider" || m_Sign.transform.GetChild(i).name != "floorlight")
                 {
-                    Debug.Log(m_Sign.transform.name + "'s " + m_Sign.transform.GetChild(i).name);
+                    //Debug.Log(m_Sign.transform.name + "'s " + m_Sign.transform.GetChild(i).name);
                     m_FlagOptions.Add(m_Sign.transform.GetChild(i));
                 }
             }
@@ -41,7 +41,7 @@ public class LineFlag : MonoBehaviour {
             {
                 if (transform.GetChild(i).name != "Sign")
                 {
-                    Debug.Log(transform.name + "'s " + transform.GetChild(i).name);
+                    //Debug.Log(transform.name + "'s " + transform.GetChild(i).name);
                     m_FlagOptions.Add(transform.GetChild(i));
                 }
             }
